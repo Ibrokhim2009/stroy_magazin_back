@@ -17,7 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from v1.view import MainView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/', MainView.as_view(), name='methodism'),
     path('', include('core.urls'))
 ]
