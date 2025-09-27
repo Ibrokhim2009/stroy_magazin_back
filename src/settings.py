@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'core',
 ]
 
+APP_NAME = 'Stroy magazin '
+
 AUTH_USER_MODEL = 'core.User'
 
 MIDDLEWARE = [
