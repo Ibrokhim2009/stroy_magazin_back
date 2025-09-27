@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'rest_framework',
 ]
 
-APP_NAME = 'Stroy magazin '
+
+APP_NAME = 'stroy magazin'
 
 AUTH_USER_MODEL = 'core.User'
 
