@@ -23,26 +23,6 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_level(self) -> int:
-    #     level = 1
-    #     parent = self.parent
-    #     while parent:
-    #         level += 1
-    #         parent = parent.parent
-    #     return level
-    #
-    # def clean(self):
-    #     level = self.get_level()
-    #     if level > 3:
-    #         self.parent = None
-    #     if level > 1 and self.image:
-    #         self.image = None
-
-
-
-
-
-
 
 class Product(models.Model):
     name = models.CharField(max_length=256)
@@ -58,7 +38,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_created=False)
     updated_at = models.DateField(auto_now_add=False, auto_now=True)
     extra = models.JSONField(default=dict)
-
+    selled = models.IntegerField(default=0)
     def get_price(self):
         return int(self.price * (1 - self.discount / 100))
 
