@@ -369,7 +369,6 @@ def user_logout(request, params):
     }
 
 def authenticate_user(request):
-    """Проверка JWT-токена"""
     auth_header = request.headers.get('Authorization')
     if not auth_header or not auth_header.startswith('Bearer '):
         return None
