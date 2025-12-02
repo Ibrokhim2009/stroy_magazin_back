@@ -40,12 +40,13 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "corsheaders",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,8 +60,9 @@ INSTALLED_APPS = [
 APP_NAME = 'stroy magazin'
 
 AUTH_USER_MODEL = 'core.User'
-
+CORS_ALLOW_ALL_ORIGINS = True
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware", 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
