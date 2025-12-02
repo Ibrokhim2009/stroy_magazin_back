@@ -1,3 +1,4 @@
+from datetime import datetime
 from functools import lru_cache
 from django.core.cache import cache
 from django.utils.translation import gettext_lazy as _
@@ -85,3 +86,13 @@ class User(AbstractBaseUser, PermissionsMixin):
             total_balance += cart_total * rates[price_type]
         usd_total = total_balance / rates["UZS"]
         return f"{usd_total:.2f} sum"
+    
+class VerificationCode(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    code = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField()
+    purpose = models.CharField(max_length=20)
+
+    def is_valid(self):
+        return self.expires_at > datetime.now().astimezone()
