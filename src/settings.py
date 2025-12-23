@@ -20,17 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SETTINGS_DIR = Path(__file__).resolve().parent
 env = environ.Env()
 environ.Env.read_env(os.path.join(SETTINGS_DIR, ".env"))
 SECRET_KEY = env("SECRET_KEY")
 
-# JWT
 JWT_SECRET_KEY = env("JWT_SECRET_KEY")
 JWT_ALGORITHM = env("JWT_ALGORITHM", default="HS256")
 
-# Email
 EMAIL_HOST = env("EMAIL_HOST", default="smtp.gmail.com")
 EMAIL_PORT = env.int("EMAIL_PORT", default=587)
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
@@ -106,8 +103,12 @@ WSGI_APPLICATION = 'src.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "app_db",
+        "USER": "app_user",
+        "PASSWORD": "123456",
+        "HOST": "localhost",
+        "PORT": 5432,
     }
 }
 
